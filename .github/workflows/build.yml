@@ -1,27 +1,29 @@
 name: Build APK
-on: 
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+on: [push, workflow_dispatch]
 
 jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
-      
+    
     - uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-        
-    - name: Install deps
+      with: { python-version: '3.10' }
+      
+    - name: Install dependencies
       run: |
         sudo apt update
-        sudo apt install -y git zip unzip openjdk-17-jdk python3-pip
-        pip3 install buildozer cython
+        sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev
+        pip install buildozer==1.5.0 cython==3.0.8
         
-    - name: Build with Buildozer
-      run: buildozer -v android debug
+    - name: Cache Buildozer
+      uses: actions/cache@v4
+      with:
+        path: .buildozer
+        key: buildozer-v1-${{ runner.os }}
+        
+    - name: Build APK
+      run: buildozer android debug
       
     - uses: actions/upload-artifact@v4
       with:
