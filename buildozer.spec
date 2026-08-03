@@ -9,8 +9,10 @@ requirements = python3,kivy
 orientation = portrait
 #icon.filename = %(source.dir)s/icon.png
 android.permissions = SEND_SMS,INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
-android.api = 31
+android.sdk_path =
+android.api = 33
 android.minapi = 21
+android.ndk = 25b
 android.archs = arm64-v8a
 android.logcat_filters = *:S python:D
 
