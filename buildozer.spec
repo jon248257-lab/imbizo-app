@@ -1,11 +1,11 @@
 [app]
-title = IMBIZO
-package.name = drdigital
+title = Imbizo
+package.name = imbizo
 package.domain = org.jontech
 source.dir =.
 source.include_exts = py,json,xlsx
 version = 1.0
-requirements = python3,kivy,openpyxl,reportlab
+requirements = python3,kivy
 orientation = portrait
 #icon.filename = %(source.dir)s/icon.png
 android.permissions = SEND_SMS,INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
