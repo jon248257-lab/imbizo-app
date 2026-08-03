@@ -8,6 +8,7 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.clock import Clock
 import datetime, os, json
+import sys # ADDED FOR ANDROID EXIT
 
 # Import all modules
 from modules.kv import KV
@@ -125,8 +126,8 @@ class DRApp(App):
             self.root.ids.status_label.text = msg # e.g. "CODE ALREADY IN USE"
 
     def restart_app(self):
-        self.stop()
-        DRApp().run()
+        # ANDROID FIX: Can't restart app. Just exit so user re-opens it
+        sys.exit(0)
 
     # ===== HEADTEACHER FUNCTIONS =====
     def load_submissions(self):
